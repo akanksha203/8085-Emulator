@@ -20,10 +20,3 @@ string convToHexa(int number)
     reverse(hexa.begin(),hexa.end());
     return hexa;
 }
-
-int main()
-{
-
-    cout<<convToHexa(1200000);
-
-}
