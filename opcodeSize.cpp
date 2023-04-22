@@ -1,6 +1,6 @@
-#include "header files/master.hpp"
+#include "headerFiles/master.hpp"
 
-void opcodeSize(string command)
+int opcodeSize(string command)
 {
     string one[]={"HLT","MOV","DCR","INR","INX","DCX","SUB","ADD","CMA","CMP","XCHG","DAD","STAX"};
     string two[]={"MVI","ADI","SUB"};
