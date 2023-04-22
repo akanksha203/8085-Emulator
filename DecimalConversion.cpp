@@ -19,11 +19,3 @@ int HexaTodecimal(string s)
     return sum;
 
 }
-
-
-int main()
-{
-
-    cout<<HexaTodecimal("FFF");
-
-}
