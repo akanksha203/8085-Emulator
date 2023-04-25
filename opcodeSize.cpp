@@ -1,3 +1,4 @@
+
 #include "headerFiles/master.hpp"
 
 int opcodeFetch(string command)
@@ -31,5 +32,6 @@ int opcodeFetch(string command)
                
     }
 
+    return -1;
 
 }
