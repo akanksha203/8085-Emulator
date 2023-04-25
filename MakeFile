@@ -1,0 +1,9 @@
+#-*-Make-*-
+
+ha: ha.o DecimalConversion.o
+
+ha.o: ha.cpp headerFiles/master.hpp
+	clang++ -c ha.cpp
+
+DecimalConversion.o : DecimalConversion.cpp
+	clang++ -c DecimalConversion.cpp

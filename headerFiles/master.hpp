@@ -3,12 +3,13 @@
 
 #include<iostream>
 #include<math.h>
-#include<string>
+#include<string.h>
 #include<vector>
 #include<fstream>
 #include<map>
 #include <algorithm>
 #include<array>
+#include<cstring>
 using namespace std;
 
 

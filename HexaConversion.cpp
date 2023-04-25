@@ -18,12 +18,15 @@ string convToHexa(int number)
     }
 
     reverse(hexa.begin(),hexa.end());
+
+    while(hexa.size()<4)
+    {
+        hexa="0"+hexa;
+    }
     return hexa;
 }
 
 int main()
 {
-
-    cout<<convToHexa(1200000);
-
+    cout<<convToHexa(12);
 }

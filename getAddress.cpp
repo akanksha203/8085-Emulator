@@ -1,15 +1,27 @@
-#include "header files/master.hpp"
-#include "function.hpp"
+#include "headerFiles/master.hpp"
+#include  "headerFiles/function.hpp"
+#include <sstream>
 
-
-char getAddress()
+string getAddress(string x, string pc)
 {
-        string arr[];
-        //devide it
+        int pcValue=hexaToDecimal(pc);
+        // vector<string> arr;
+        stringstream statement(x);
+        string temp;
+        getline(statement,temp,' ');
+        // arr.push_back(temp);
+        // while(getline(statement,temp,','))
+        // {
+        //         arr.push_back(temp);
+        // }
+        
+        int count=opcodeFetch(temp);
+        cout<<count<<endl;;
+        
+        pcValue+=count;
+        return convToHexa(pcValue);
 
-        int opcode=
+        
 
-   
 
 }
-

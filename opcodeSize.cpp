@@ -1,6 +1,6 @@
 #include "headerFiles/master.hpp"
 
-int opcodeSize(string command)
+int opcodeFetch(string command)
 {
     string one[]={"HLT","MOV","DCR","INR","INX","DCX","SUB","ADD","CMA","CMP","XCHG","DAD","STAX"};
     string two[]={"MVI","ADI","SUB"};
