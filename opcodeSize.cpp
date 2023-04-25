@@ -1,4 +1,5 @@
-#include "header files/master.hpp"
+
+#include "headerFiles/master.hpp"
 
 int opcodeSize(string command)
 {
@@ -32,4 +33,5 @@ int opcodeSize(string command)
     }
 
     return -1;
+
 }
