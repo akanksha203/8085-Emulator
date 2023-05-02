@@ -1,5 +1,5 @@
 #include "headerFiles/master.hpp"
-
+#include  "headerFiles/function.hpp"
 string convToHexa(int number)
 {
     string hexa="";
@@ -25,11 +25,3 @@ string convToHexa(int number)
     }
     return hexa;
 }
-<<<<<<< HEAD
-
-int main()
-{
-    cout<<convToHexa(12);
-}
-=======
->>>>>>> 667c2ca7761eb60d24d63e8c14685b6e3a217553

@@ -1,8 +1,8 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
 
-void INR(String register[])
+void INR(string registers[])
 {
-    int op=HexaToDecimal(register[0]);
-    register[0]=convToHexa(++op);
+    int op=hexaToDecimal(registers[0]);
+    registers[0]=convToHexa(++op);
 }

@@ -1,9 +1,39 @@
-#-*-Make-*-
 
-ha: ha.o DecimalConversion.o
+# Makefile
 
-ha.o: ha.cpp headerFiles/master.hpp
-	clang++ -c ha.cpp
+main: main.o getAddress.o
+	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
 
-DecimalConversion.o : DecimalConversion.cpp
-	clang++ -c DecimalConversion.cpp
+main.o: main.cpp headerFiles/master.hpp
+	g++ -c main.cpp
+
+getAddress.o: getAddress.cpp
+	g++ -c getAddress.cpp
+
+HexaConversion.o:HexaConversion.hpp
+	g++ -c HexaConversion.cpp
+
+DecimalConversion.o:DecimalConversion.hpp
+	g++ -c DecimalConversion.cpp
+
+opcodeSize.o:opcodeSize.hpp
+	g++ -c opcodeSize.cpp
+
+
+# main.o: main.cpp headerFiles/master.hpp
+# 	g++ -c main.cpp -o main.o
+
+# getAddress.o: getAddress.cpp
+# 	g++ -c getAddress.cpp -o getAddress.o
+
+# HexaConversion.o: HexaConversion.cpp HexaConversion.hpp
+# 	g++ -c HexaConversion.cpp -o HexaConversion.o
+
+# DecimalConversion.o: DecimalConversion.cpp DecimalConversion.hpp
+# 	g++ -c DecimalConversion.cpp -o DecimalConversion.o
+
+# opcodeSize.o: opcodeSize.cpp opcodeSize.hpp
+# 	g++ -c opcodeSize.cpp -o opcodeSize.o
+
+# main: main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
+# 	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
