@@ -1,5 +1,5 @@
 #include "headerFiles/master.hpp"
-
+#include  "headerFiles/function.hpp"
 int hexaToDecimal(string s)
 {
     reverse(s.begin(),s.end());
