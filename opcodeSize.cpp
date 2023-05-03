@@ -1,6 +1,5 @@
-
 #include "headerFiles/master.hpp"
-
+#include  "headerFiles/function.hpp"
 int opcodeFetch(string command)
 {
     string one[]={"HLT","MOV","DCR","INR","INX","DCX","SUB","ADD","CMA","CMP","XCHG","DAD","STAX"};

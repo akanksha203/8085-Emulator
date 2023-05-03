@@ -1,5 +1,5 @@
 #include "headerFiles/master.hpp"
-
+#include "headerFiles/function.hpp"
 
 class emulator8085{
     private:
@@ -35,8 +35,8 @@ class emulator8085{
         while(!file.eof())
         {
             getline(file,line);
-            getAddress(line,pc,arr);
-            pc=arr;
+            pc=getAddress(line,pc);
+        
             sequence.push_back(pc);
             memory[pc]=line;
         }

@@ -10,6 +10,8 @@
 #include <algorithm>
 #include<array>
 #include<cstring>
+
+#include<cmath>
 using namespace std;
 
 
