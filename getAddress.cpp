@@ -15,9 +15,7 @@ string getAddress(string x, string pc)
         //         arr.push_back(temp);
         // }
         
-        int count=opcodeFetch(temp);
-        cout<<count<<endl;;
-        
+        int count=opcodeFetch(temp);        
         pcValue+=count;
         return convToHexa(pcValue);
 

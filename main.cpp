@@ -26,6 +26,8 @@ class emulator8085{
     {
         cout<<"Enter the starting address:";
         cin>>start;
+        pc=start;
+
         string line;
         ifstream file("file.txt");
 
@@ -35,10 +37,11 @@ class emulator8085{
         while(!file.eof())
         {
             getline(file,line);
-            pc=getAddress(line,pc);
-        
             sequence.push_back(pc);
             memory[pc]=line;
+            pc=getAddress(line,pc);
+            if(line=="HLT")
+                break;
         }
     }
 
