@@ -45,12 +45,10 @@ class emulator8085{
         }
     }
 
-    
-    // void evaluate(memory,sequence,address,pc, register, evaluate)
-    // {
-
-    // }
-
+    void eval()
+    {
+        evaluate(sequence, memory, registers, flag, start, pc);
+    }
 
 };
 
@@ -59,8 +57,7 @@ int main()
 
     emulator8085 instance;
     instance.input();
-
-
+    instance.eval();
     // instance.evaluate();
 
 
