@@ -40,16 +40,22 @@ class emulator8085{
             sequence.push_back(pc);
             memory[pc]=line;
             pc=getAddress(line,pc);
-            if(line=="HLT")
-                break;
+            // if(line=="HLT")
+            //     break;
         }
     }
+   void output() {
+    for (int i = 0; i < sequence.size(); i++) {
+        cout << sequence[i] << ": " << memory[sequence[i]] << endl;
+    }
+}
+
 
     
-    // void evaluate(memory,sequence,address,pc, register, evaluate)
-    // {
-
-    // }
+    void evaluates()
+    {
+       evaluate(sequence,memory,registers,flag,start,pc);
+     }
 
 
 };
@@ -59,7 +65,8 @@ int main()
 
     emulator8085 instance;
     instance.input();
-
+    instance.output();
+    instance .evaluates();
 
     // instance.evaluate();
 
