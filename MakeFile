@@ -1,8 +1,8 @@
 
 # Makefile
 
-main: main.o getAddress.o
-	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
+main: main.o getAddress.o evaluate.o 
+	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o
 
 main.o: main.cpp headerFiles/master.hpp
 	g++ -c main.cpp
@@ -19,21 +19,16 @@ DecimalConversion.o:DecimalConversion.hpp
 opcodeSize.o:opcodeSize.hpp
 	g++ -c opcodeSize.cpp
 
+evaluate.o:headerFiles/function.hpp  headerFiles/arithmatic.hpp headerFiles/master.hpp headerFiles/logical.hpp loadAndStore.cpp logical.cpp arithmatic.cpp
+	g++ -c evaluate.cpp arithmatic.cpp logical.cpp loadAndStore.cpp
 
-# main.o: main.cpp headerFiles/master.hpp
-# 	g++ -c main.cpp -o main.o
 
-# getAddress.o: getAddress.cpp
-# 	g++ -c getAddress.cpp -o getAddress.o
 
-# HexaConversion.o: HexaConversion.cpp HexaConversion.hpp
-# 	g++ -c HexaConversion.cpp -o HexaConversion.o
+# arithmatic.o: arithmatic.cpp
+# 	g++ -c arithmatic.cpp
 
-# DecimalConversion.o: DecimalConversion.cpp DecimalConversion.hpp
-# 	g++ -c DecimalConversion.cpp -o DecimalConversion.o
+# logical.o: logical.cpp
+# 	g++ -c logical.cpp
 
-# opcodeSize.o: opcodeSize.cpp opcodeSize.hpp
-# 	g++ -c opcodeSize.cpp -o opcodeSize.o
-
-# main: main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
-# 	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o
+# loadAndStore.o :loadAndStore.cpp
+# 	g++ -c loadAndStore.cpp

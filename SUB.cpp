@@ -1,18 +1,18 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
 
-void SUB(int reg, string register[], map<string,string> memory)
+void SUB(int reg, string registers[], map<string,string> memory)
 {
-    int op1=hexaToDecimal(register[0]);
+    int op1=hexaToDecimal(registers[0]);
     if(reg!='M')
     {
         int op2;
         if(reg!='H'||reg!='L')
-        op2=hexaToDecimal(register[reg-65]);
+        op2=hexaToDecimal(registers[reg-65]);
         else if(reg=='H')
-        op1=hexaToDecimal(register[5]);
+        op1=hexaToDecimal(registers[5]);
         else
-        op1=hexaToDecimal(register[6]);
+        op1=hexaToDecimal(registers[6]);
         int sum=op1-op2;
         register[0]=convToHexa(sum);
     }
@@ -20,7 +20,7 @@ void SUB(int reg, string register[], map<string,string> memory)
     else
     {
         string address="";
-        address=register[5]+register[6];
+        address=registers[5]+registers[6];
         string valueStored=memory[address];
         int op2=hexaToDecimal(valueStored);
         int sum=op1-op2;

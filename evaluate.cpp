@@ -1,15 +1,21 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
+#include "headerFiles/arithmatic.hpp"
+#include "headerFiles/loadAndStore.hpp"
+#include "headerFiles/logical.hpp"
 
-void evaluate(sequence, memory, registers, flag, start)
+void evaluate(vector<string> sequence,map<string,string> memory,string registers[],bool flag[],string start,string pc)
 {
     pc=start;
-    i=0;
-    while(memory[pc]!=NULL)
+    int i=0;
+    while(i!=sequence.size())
     {
-        string currentCommand=memory[pc];
         vector<string> arr;
-         arr.push_back(temp);
+        string currentCommand=memory[pc];
+        stringstream statement(currentCommand);
+        string temp="";
+        getline(statement,temp,' ');
+        arr.push_back(temp);
         while(getline(statement,temp,','))
         {
                 arr.push_back(temp);
@@ -19,17 +25,17 @@ void evaluate(sequence, memory, registers, flag, start)
         switch(command)
         {
             case "MOV":
-                MOV(arr[1],arr[2], register);
+                MOV(arr[1],arr[2], registers);
                 pc=sequence[++i];
             break;
 
             case "MVI":
-                MVI(arr[1],arr[2],register);
+                MVI(arr[1],arr[2],registers);
                 pc=sequence[++i];
             break;
 
             case "ADD":
-                ADD(arr[1],register,memory);
+                ADD(arr[1],registers,memory);
                 pc=sequence[++i];
             break;
 
@@ -39,7 +45,7 @@ void evaluate(sequence, memory, registers, flag, start)
             break;
 
             case "SUB":
-                SUB(arr[1],register,memory);
+                SUB(arr[1],registers,memory);
                 pc=sequence[++i];
 
             break;
@@ -61,17 +67,17 @@ void evaluate(sequence, memory, registers, flag, start)
             break;
             
             case "INR":
-                INR(register);
+                INR(registers);
                 pc=sequence[++i];
             break;
             
             case "INX":
-                INX(register);
+                INX(registers);
                 pc=sequence[++i];
             break;
             
             case "DCX":
-                DCX(register);
+                DCX(registerss);
                 pc=sequence[++i];
             break;
             
@@ -84,7 +90,7 @@ void evaluate(sequence, memory, registers, flag, start)
             break;
             
             case "XCHG":
-                XCHG(register);
+                XCHG(registers);
                 pc=sequence[++i];
             break;
             
@@ -130,7 +136,7 @@ void evaluate(sequence, memory, registers, flag, start)
             break;
             
             case "DCX":
-                DCX(register);
+                DCX(registers);
                 pc=sequence[++i];
             break;
 

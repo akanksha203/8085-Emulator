@@ -1,8 +1,7 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
-#include<string>
-using namespace std;
-bool validAddress(String str)
+
+bool validAddress(string str)
 {
     bool flag;
     int len=str.length();
