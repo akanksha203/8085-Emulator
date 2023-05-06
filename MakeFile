@@ -1,8 +1,13 @@
 
 # Makefile
 
+<<<<<<< HEAD
 main: main.o getAddress.o
 	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.cpp
+=======
+main: main.o getAddress.o evaluate.o 
+	g++ -o main main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o
+>>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c
 
 main.o: main.cpp headerFiles/master.hpp
 	g++ -c main.cpp
@@ -20,5 +25,20 @@ opcodeSize.o:opcodeSize.hpp
 	g++ -c opcodeSize.cpp
 
 evaluate.o:headerFiles/function.hpp  headerFiles/arithmatic.hpp headerFiles/master.hpp headerFiles/logical.hpp loadAndStore.cpp logical.cpp arithmatic.cpp
+<<<<<<< HEAD
 	g++ -c evaluate.cpp arithmatic.cpp logical.cpp loadAndStore.cpp 
 
+=======
+	g++ -c evaluate.cpp arithmatic.cpp logical.cpp loadAndStore.cpp
+
+
+
+# arithmatic.o: arithmatic.cpp
+# 	g++ -c arithmatic.cpp
+
+# logical.o: logical.cpp
+# 	g++ -c logical.cpp
+
+# loadAndStore.o :loadAndStore.cpp
+# 	g++ -c loadAndStore.cpp
+>>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c
