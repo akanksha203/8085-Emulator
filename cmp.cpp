@@ -1,19 +1,19 @@
 
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
-void cmp(string arg,string register[],bool flag[],map<string,string>&memory)
+void cmp(string arg,string registers[],bool flag[],map<string,string>&memory)
 {
 int l=arg.length();
 if(l==1)
 {
     if(arg=="M")
-    {string address=register[5]+register[6];
+    {string address=registers[5]+registers[6];
 
-if(register[0]<memory[address])
+if(registers[0]<memory[address])
 {
     flag[c]=true;
 }
-else if(register[0]==memory[address])
+else if(registers[0]==memory[address])
 {
     flag[z]=true;
 }
@@ -26,11 +26,11 @@ else{
     {
         int index=registerNumber(arg);
         {
-            if(register[0]<register[index])
+            if(registers[0]<registers[index])
             {
                 flag[c]=0;
             }
-            else if(register[0]==register[index])
+            else if(registers[0]==registers[index])
             {
                 flag[z]=0;
             }

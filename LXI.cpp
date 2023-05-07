@@ -23,14 +23,3 @@ void LXI(string registers[], map<string,string>memory ,string operand)
   
     //A0 B1 C2 D3 E4 H5 L6
 }
-# #-*-Make-*-
-
-# ha: ha.o DecimalConversion.o
-
-# ha.o: ha.cpp headerFiles/master.hpp
-# 	clang++ -c ha.cpp
-
-# DecimalConversion.o : DecimalConversion.cpp
-# 	clang++ -c DecimalConversion.cpp
-output:main.o h
-target:dependenciesz

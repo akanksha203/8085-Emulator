@@ -1,13 +1,14 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
 
-void INX(String register[])
+void INX(string registers[],map<string,string>memory)
 {
         string address="";
-        address=register[5]+register[6];
+        address=registers[5]+registers[6];
+        string valueStored=memory[address];
         int value=hexaToDecimal(valueStored);
         value++;
         address=convToHexa(value);
-        register[5]=address.substr(0,2);
-        register[6]=address.substr(2,2);
+        registers[5]=address.substr(0,2);
+        registers[6]=address.substr(2,2);
 }

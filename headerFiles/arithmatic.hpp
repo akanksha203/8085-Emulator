@@ -3,15 +3,11 @@
 
 void INR(string []);
 void DCR(string []);
-void DCX(string []);
-void INX(string []);
-void ADD(int ,string [],map<string,string>);
-void SUB(int ,string [],map<string,string>);
-void DAD(string [], map<string,string> ,bool [])
+void DCX(string [],map<string,string>memory);
+void INX(string [],map<string,string>memory);
+void ADD(string ,string [],map<string,string>);
+void SUB(string ,string [],map<string,string>);
+void DAD(string [], map<string,string> ,bool []);
 
 
-<<<<<<< HEAD
 #endif
-=======
-#endif
->>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c

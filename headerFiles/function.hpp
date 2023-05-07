@@ -10,11 +10,7 @@ bool validAddress(string);
 bool ishexa(char);
 bool validRegister(string);
 string getAddress(string , string);
-void evaluate(vector<string> &,map<string,string> ,string [],bool [],string ,string);
-<<<<<<< HEAD
-=======
-
->>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c
+void evaluate(vector<string>,map<string,string> ,string [],bool [],string ,string);
 
 
 

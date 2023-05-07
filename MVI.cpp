@@ -1,5 +1,6 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
+#include "headerFiles/validity.hpp"
 void MVI(string arg1 ,string arg2,string registers[],map<string,string>&memory )
 {
 int l1=arg1.size();
@@ -15,7 +16,7 @@ if(l1==1&&l2==2)
     }
    else if(arg1=="M")
     {
-        address=registers[5]+registers[6];
+        string address=registers[5]+registers[6];
         if(validData(arg2))
         {
         memory[address]=arg2;

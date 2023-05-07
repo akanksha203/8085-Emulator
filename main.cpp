@@ -14,7 +14,6 @@ class emulator8085{
      emulator8085(){
         start="";
         pc="";
-        registers;
         for(int i=0;i<7;i++)
             registers[i]="00";
         for(int i=0;i<7;i++)
@@ -51,19 +50,11 @@ class emulator8085{
 }
 
 
-<<<<<<< HEAD
     
     void evaluates()
     {
        evaluate(sequence,memory,registers,flag,start,pc);
      }
-
-=======
-    void eval()
-    {
-        evaluate(sequence, memory, registers, flag, start, pc);
-    }
->>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c
 
 };
 
@@ -72,14 +63,9 @@ int main()
 
     emulator8085 instance;
     instance.input();
-<<<<<<< HEAD
-    instance.output();
+
+    
     instance .evaluates();
-
-=======
-    instance.eval();
->>>>>>> b0b5697b9cc8c4ac195014987800bb75c801cd4c
-    // instance.evaluate();
-
+    instance.output();
 
 }

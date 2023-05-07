@@ -1,6 +1,6 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
-bool ishexa(char str)
+bool ishexa(char a)
 {
     if((a>='0'&&a<='9')||(a<='A'&&a>='F'))
     return true;

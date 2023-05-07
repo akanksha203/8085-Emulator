@@ -14,7 +14,7 @@ void SUB(int reg, string registers[], map<string,string> memory)
         else
         op1=hexaToDecimal(registers[6]);
         int sum=op1-op2;
-        register[0]=convToHexa(sum);
+        registers[0]=convToHexa(sum);
     }
 
     else
@@ -24,7 +24,7 @@ void SUB(int reg, string registers[], map<string,string> memory)
         string valueStored=memory[address];
         int op2=hexaToDecimal(valueStored);
         int sum=op1-op2;
-        register[0]=convToHexa(sum);
+        registers[0]=convToHexa(sum);
 
     }
 }
