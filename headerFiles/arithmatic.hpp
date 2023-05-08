@@ -1,7 +1,7 @@
 #ifndef _ARITHMATIC_H
 #define _ARITHMATIC_H
 
-void INR(string []);
+void INR(string,string []);
 void DCR(string []);
 void DCX(string [],map<string,string>memory);
 void INX(string [],map<string,string>memory);

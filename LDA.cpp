@@ -1,6 +1,6 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
-using namespace std;
+
 void LDA(string arg,string registers[],map<string ,string>memory)
 {
     int l=arg.length();
@@ -9,13 +9,13 @@ void LDA(string arg,string registers[],map<string ,string>memory)
        if( validAddress(arg))
        {
         registers[0]=memory[arg];
-    }
-    else{
+       }
+       else{
         cout<<"invalid address";
-    }
-}
-else
-{
-    cout<<"invlaid arg";
-}
+       }
+     }
+     else
+     {
+        cout<<"invlaid arg";
+     }
 }

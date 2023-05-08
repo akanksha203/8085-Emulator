@@ -1,11 +1,9 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
 
-string JNC(bool flag[],string pos)
+string JNC(string address,string pc,bool flag[])
 {
     
     if(flag[0]==false)
-      return pos;
-
-
+      cout<<pc;
 }

@@ -23,31 +23,39 @@ class emulator8085{
 
     void input()
     {
-        cout<<"Enter the starting address:";
-        cin>>start;
-        pc=start;
+        cout << "Enter the starting address: ";
+        cin >> start;
+        pc = start;
 
         string line;
         ifstream file("file.txt");
 
-        int lineNo=0;
-        char arr[4]={""};
-
-        while(!file.eof())
+        while (!file.eof())
         {
-            getline(file,line);
+            getline(file, line);
             sequence.push_back(pc);
-            memory[pc]=line;
-            pc=getAddress(line,pc);
-            // if(line=="HLT")
-            //     break;
+            memory[pc] = line;
+            pc = getAddress(line, pc);
+
+            if (line.substr(0, 3) == "LDA")
+            {
+                string address = line.substr(4);
+                cout << "Enter value for memory address " << address << ": ";
+                string value;
+                cin >> value;
+                memory[address] = value;
+            }
         }
     }
-   void output() {
-    for (int i = 0; i < sequence.size(); i++) {
-        cout << sequence[i] << ": " << memory[sequence[i]] << endl;
+
+    void output()
+    {
+        for (int i = 0; i < sequence.size(); i++)
+        {
+            cout << sequence[i] << ": " << memory[sequence[i]] << endl;
+        }
+    
     }
-}
 
 
     
@@ -63,9 +71,7 @@ int main()
 
     emulator8085 instance;
     instance.input();
-
-    
-    instance .evaluates();
+    instance.evaluates();
     instance.output();
 
 }

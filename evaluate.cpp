@@ -23,33 +23,68 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         }
 
         string command = arr[0];
-        cout << command<<endl;
+       // cout << command<<endl;
         if (command == "MOV")
         {
+           // cout<<arr[1]<<" "<<arr[2];
+
             MOV(arr[1], arr[2], registers, memory);
             pc = sequence[++i];
+            //cout<<registers[1]<<endl;
         }
         else if (command == "LDA")
         {
-            string address = arr[1];
-            if (memory.find(address) != memory.end())
-            {
-                registers[0] = memory[address];
-            }
+            string reg = arr[1];
+            LDA(reg, registers, memory);
             pc = sequence[++i];
-            //cout<<registers[0];
+            // cout<<"Accumulator:"<<registers[0]<<endl;
+        }
+        else if (command == "MVI")
+        {
+            MVI(arr[1],arr[2], registers, memory);
+            pc = sequence[++i];
+            
         }
         else if (command == "ADD")
         {
             string reg = arr[1];
             ADD(reg, registers, memory);
             pc = sequence[++i];
+           //cout<<registers[0]<<endl;
+        }
+
+        else if (command == "SUB")
+        {
+            string reg = arr[1];
+            SUB(reg, registers, memory);
+            pc = sequence[++i];
+           // cout<<registers[0]<<endl;
+        }
+        else if(command == "INR")
+        {
+            INR(arr[1],registers);
+            pc = sequence[++i];
+            cout<<"after increment:"<<registers[0]<<endl;
         }
         else if (command == "STA")
         {
             string address = arr[1];
             STA(address, registers, memory);
             pc = sequence[++i];
+            cout<<"value at "<<arr[1]<<":"<<memory[arr[1]]<<endl;
+        }
+        else if(command == "JNC")
+        {
+            string loop;
+            string address = arr[1];
+            loop=JNC(address, pc, flag);
+            pc=loop;
+            pc=sequence[++i];
+            //pc = sequence[++i];
+        }
+        else if(command == "HLT")
+        {
+            break;
         }
         else
         {

@@ -4,7 +4,7 @@
 #define _LOADANDSTORE_H
 
 void XCHG(string []);
-void LDA(string ,string [],map<string ,string>&);
+void LDA(string ,string [],map<string ,string>);
 void LHLD(string,string [],map<string,string>&);
 void LXI(string [], map<string,string> ,string);
 void MOV(string ,string ,string [],map<string,string>&);

@@ -11,8 +11,9 @@ if(l1==1&&l2==2)
     {
         if(validData(arg2))
         {
-        registers[registerNumber(arg1)]=arg2;
-    }
+         registers[registerNumber(arg1)]=arg2;
+         
+        }
     }
    else if(arg1=="M")
     {
