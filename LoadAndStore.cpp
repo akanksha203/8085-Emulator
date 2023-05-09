@@ -1,15 +1,16 @@
 
 #include"headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
+#include "headerFiles/validity.hpp"
 
-//////////////////    XCHG function//
-
+//////////////////    XCHG 
 void XCHG(string registers[])
 {
     string temp;
     temp=registers[3];
     registers[3]=registers[5];
     registers[5]=temp;
+    
     temp=registers[4];
     registers[4]=registers[6];
     registers[6]=temp;
@@ -17,7 +18,6 @@ void XCHG(string registers[])
 
 
 //////////////          MVI 
-
 void MVI(string arg1 ,string arg2,string registers[],map<string,string>&memory )
 {
 int l1=arg1.size();
@@ -28,8 +28,9 @@ if(l1==1&&l2==2)
     {
         if(validData(arg2))
         {
-        register[registerNumber(arg1)]=arg2;
-    }
+         registers[registerNumber(arg1)]=arg2;
+         
+        }
     }
    else if(arg1=="M")
     {
@@ -53,10 +54,7 @@ else{
 
 
 //////////    LDA
-
-#include "headerFiles/function.hpp"
-using namespace std;
-void LDA(string arg,string registers[],map<string string>&memory)
+void LDA(string arg,string registers[],map<string,string>memory)
 {
     int l=arg.length();
     if(l==4)
@@ -64,49 +62,76 @@ void LDA(string arg,string registers[],map<string string>&memory)
        if( validAddress(arg))
        {
         registers[0]=memory[arg];
-    }
-    else{
+       }
+       else{
         cout<<"invalid address";
-    }
-}
-else
-{
-    cout<<"invlaid arg";
-}
+       }
+     }
+     else
+     {
+        cout<<"invlaid argument";
+     }
 }
 
 
 ///////// LHLD
-
 void LHLD(string add,string registers[],map<string,string>&memory)
 {
-int l=add.size();
-if(l==4)
+    int l=add.size();
+    if(l==4)
+    {
+        if (validAddress(add))
+        {
+            registers[6]=memory[add];
+           // cout<<"Register 6 is "<<registers[6]<<endl;
+           int nextAddress = hexaToDecimal(add) + 1;
+            registers[5] = memory[convToHexa(nextAddress)];
+
+            //cout<<"Register 5 is "<<registers[5]<<endl;
+          
+        }
+        else
+        {
+            cout<<"invalid";
+            exit(0);
+        }
+    }
+    else
+    {
+        cout<<"not a valid address";
+        exit(0);
+    }
+}
+
+
+/////////////SHLD
+void SHLD(string add, string registers[], map<string,string>&memory)
 {
-if (validAddress(add))
-{
-    registers[6]=memory[add];
-    registers[5]=memory[add+"1"];
-     cout<<"h"<<registers[5]<<endl;
-    cout<<registers[6]<<endl;
+    int l = add.size();
+    if (l == 4)
+    {
+        if (validAddress(add))
+        {
+            memory[add] = registers[6];
+            int nextAddress = hexaToDecimal(add) + 1;
+            memory[convToHexa(nextAddress)] = registers[5];
+            
+        }
+        else
+        {
+            cout << "Invalid memory address" << endl;
+            exit(0);
+        }
+    }
+    else
+    {
+        cout << "Not a valid address" << endl;
+        exit(0);
+    }
 
 }
-else
-{
-    cout<<"invalid";
-    exit(0);
-}
-}
-else
-{
-cout<<"not a valid address";
-exit(0);
-}
-}
-
 
 /////////////  LXI
-
 void LXI(string registers[], map<string,string>memory ,string operand)
 {
     string reg = operand.substr(0,2);
@@ -133,7 +158,6 @@ void LXI(string registers[], map<string,string>memory ,string operand)
 
 
 /////////////////////   MOV
-
 void MOV(string arg1,string arg2,string registers[],map<string,string>&memory)
 {
 int l1=arg1.size();
@@ -142,7 +166,7 @@ if(l1==1&&l2==1)
 {
     if(arg1!="M"&&arg2!="M"&&validRegister(arg1)&&validRegister(arg2))
 {
-    registers[registerNumber(arg1)]=registers[registerNumner(arg2)];
+    registers[registerNumber(arg1)]=registers[registerNumber(arg2)];
 }
 else if(arg1=="M"&&arg2!="M"&&validRegister(arg2))
 {
@@ -163,7 +187,6 @@ else
 
 
 /////////////////////// STA
-
 void STA(string arg,string registers[],map<string,string>&memory)
 {
     int l1=arg.length();
@@ -171,7 +194,7 @@ void STA(string arg,string registers[],map<string,string>&memory)
     {
         if(validAddress(arg))
         {
-memory[arg]=registers[0];
+            memory[arg]=registers[0];
         }
         else{
             cout<<"invalid address";

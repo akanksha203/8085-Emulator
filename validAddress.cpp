@@ -8,9 +8,9 @@ bool validAddress(string str)
     for(int i=0;i<len;i++)
     {
         if((str[i]>='0'&&str[i]<='9')||(str[i]<='A'&&str[i]<='F'))
-    flag=true;
-    else
-    flag=false;
+            flag=true;
+         else
+            flag=false;
     }
     return flag;
 }

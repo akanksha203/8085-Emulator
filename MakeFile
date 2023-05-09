@@ -38,8 +38,8 @@ CFLAGS = -std=c++11
 # Executable name
 EXECUTABLE = main
 
-# Source files
-SOURCES = main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o MOV.o MVI.o ADD.o STA.o SUB.o LDA.o LXI.o CMA.o INR.o INX.o DCX.o DCR.o DAD.o XCHG.o JNC.o validAddress.o validData.o validRegister.o validRegisterPair.o registerNumber.o
+# Source files                         
+SOURCES = main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o  arithmatic.o LoadAndStore.o logical.o validAddress.o validData.o validRegister.o validRegisterPair.o registerNumber.o
 
 # Object files
 OBJECTS = $(SOURCES:.cpp=.o)

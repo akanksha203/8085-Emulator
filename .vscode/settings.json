@@ -1,8 +1,11 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
+        "*.embeddedhtml": "html",
         "map": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "cmath": "cpp",
+        "iostream": "cpp"
     }
 
 }

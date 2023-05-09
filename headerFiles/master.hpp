@@ -10,6 +10,7 @@
 #include <algorithm>
 #include<array>
 #include<cstring>
+#include <bitset> 
 
 #include<cmath>
 using namespace std;

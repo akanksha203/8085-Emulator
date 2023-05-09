@@ -8,6 +8,6 @@ void INX(string [],map<string,string>memory);
 void ADD(string ,string [],map<string,string>);
 void SUB(string ,string [],map<string,string>);
 void DAD(string [], map<string,string> ,bool []);
-
+void CMA(string [],bool []);
 
 #endif

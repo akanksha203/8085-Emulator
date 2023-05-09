@@ -1,23 +1,28 @@
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
+#include "headerFiles/validity.hpp"
 
-
-//////////////////ADDD
-
-void ADD(int reg, string registers[], map<string,string> memory)
+//////////////ADD
+void ADD(string reg,string registers[],map<string,string> memory)
 {
     int op1=hexaToDecimal(registers[0]);
-    if(reg!='M')
+    cout<<"op1 is"<<op1<<endl;
+    if(reg!="M")
     {
         int op2;
-        if(reg!='H'||reg!='L')
-        op2=hexaToDecimal(registers[reg-65]);
-        else if(reg=='H')
+        if(reg!="H"||reg!="L"){
+        op2=hexaToDecimal(registers[registerNumber(reg)]);
+        cout<<"op2 is:"<<op2<<endl;
+        }
+        else if(reg=="H")
         op1=hexaToDecimal(registers[5]);
         else
         op1=hexaToDecimal(registers[6]);
         int sum=op1+op2;
+        cout<<"SUM IS:"<<sum<<endl;
         registers[0]=convToHexa(sum);
+        
+         
     }
 
     else
@@ -33,71 +38,107 @@ void ADD(int reg, string registers[], map<string,string> memory)
 }
 
 
+////////////////SUB
+void SUB(string reg, string registers[], map<string,string>memory)
+{
+    int op1=hexaToDecimal(registers[0]);
+    if(reg!="M")
+    {
+        int op2;
+        if(reg!="H"||reg!="L")
+        op2=hexaToDecimal(registers[registerNumber(reg)]);
+        else if(reg=="H")
+        op1=hexaToDecimal(registers[5]);
+        else
+        op1=hexaToDecimal(registers[6]);
+        int diff=op2-op1;
+       // cout<<"DIFFERENCE IS :"<<diff<<endl;
+        registers[0]=convToHexa(diff);
+    }
 
-/////DAD
+    else
+    {
+        string address="";
+        address=registers[5]+registers[6];
+        string valueStored=memory[address];
+        int op2=hexaToDecimal(valueStored);
+        int sum=op1-op2;
+        registers[0]=convToHexa(sum);
+
+    }
+}
+
+
+////////////////DAD
 
 void DAD(string registers[], map<string,string>memory ,bool flag[])
 {
-        string address1="";
-        address1=registers[5]+registers[6];
-        string valueStored1=memory[address1];
-        int op1=hexaToDecimal(valueStored1);
+ 
+        string num1="";
+        num1=registers[5]+registers[6];
+        int op1=hexaToDecimal(num1);
+       
 
-        string address2="";
-        address2=registers[3]+registers[4];
-        string valueStored2=memory[address2];
-        int op2=hexaToDecimal(valueStored2);
-        int total =op1+op2;
-        
-        int h1=hexaToDecimal(registers[6]+registers[5]);
-        h1=h1+total;
+        string num2="";
+        num2=registers[3]+registers[4];
+        int op2=hexaToDecimal(num2);
+        int sum=op1+op2;
+      
+        int lower8Bits = sum & 0xFF;
+        registers[5] = convToHexa(lower8Bits);
+        int upper8Bits = (sum >> 8) & 0xFF;
+        registers[6] = convToHexa(upper8Bits);
 
-        if(h1>0xFFFF)
-        {
-            h1=h1 & 0xFFFF;
-         flag[0]=true;
+    
+
+}
+
+
+
+//////////CMA
+void CMA(string registers[],bool flag[]) {
+    int op1 = hexaToDecimal(registers[0]);
+
+    vector<int> binaryNum;
+    while (op1 > 0) {
+        binaryNum.push_back(op1 % 2);
+        op1 = op1 / 2;
+    }
+    while (binaryNum.size() < 8) {
+        binaryNum.push_back(0);
+    }
+
+    reverse(binaryNum.begin(), binaryNum.end());
+
+    for (int i = 0; i < binaryNum.size(); i++) {
+        if (binaryNum[i] == 1) {
+            binaryNum[i] = 0;
+        } else {
+            binaryNum[i] = 1;
         }
-        else
-          flag[0]=false;
-        string news=convToHexa(h1);
-        registers[6]=news.substr(0,2);
-        registers[5]=news.substr(2,2);
-    //A0 B1 C2 D3 E4 H5 L6
-    // register[6]=register[6]+register[4];
-    // register[7]=register[7]+register[5];
-    // hexaToDecimal(register[reg-65]);
+    }
 
+    int decimal = 0;
+    int k = 0;
+    for (int i = binaryNum.size() - 1; i >= 0; i--) {
+        decimal += binaryNum[i] * pow(2, k);
+        k++;
+    }
+
+    registers[0] = convToHexa(decimal);
+    if(binaryNum[0]==1)
+       flag[7]=true;
+    if (decimal==0)
+       flag[6]=true;
 }
 
-//////      DCX
 
-void DCX(String registers[])
+//////////////INX
+void INX(string registers[],map<string,string>memory)
 {
         string address="";
         address=registers[5]+registers[6];
-        int value=hexaToDecimal(valueStored);
-        value--;
-        address=convToHexa(value);
-        registers[5]=address.substr(0,2);
-        registers[6]=address.substr(2,2);
-}
-
-
-///////     INR
-
-void INR(string registers[])
-{
-    int op=hexaToDecimal(registers[0]);
-    registers[0]=convToHexa(++op);
-}
-
-
-/////       INX
-
-void INX(String registers[])
-{
-        string address="";
-        address=registers[5]+registers[6];
+        string valueStored=memory[address];
         int value=hexaToDecimal(valueStored);
         value++;
         address=convToHexa(value);
@@ -106,41 +147,51 @@ void INX(String registers[])
 }
 
 
-////////        SUB
 
-void SUB(int reg, string registers[], map<string,string> memory)
+
+
+
+
+////////////DCX
+void DCX(string registers[],map<string,string>memory)
 {
-    int op1=hexaToDecimal(registers[0]);
-    if(reg!='M')
-    {
-        int op2;
-        if(reg!='H'||reg!='L')
-        op2=hexaToDecimal(registers[reg-65]);
-        else if(reg=='H')
-        op1=hexaToDecimal(registers[5]);
-        else
-        op1=hexaToDecimal(registers[6]);
-        int sum=op1-op2;
-        registers[0]=convToHexa(sum);
-    }
-
-    else
-    {
         string address="";
         address=registers[5]+registers[6];
         string valueStored=memory[address];
-        int op2=hexaToDecimal(valueStored);
-        int sum=op1-op2;
-        registers[0]=convToHexa(sum);
-
-    }
-
+        int value=hexaToDecimal(valueStored);
+        value--;
+        address=convToHexa(value);
+        registers[5]=address.substr(0,2);
+        registers[6]=address.substr(2,2);
 }
 
-////////     DCR
 
-void DCR(String registers[])
+
+
+
+
+////////////INR
+void INR(string arg,string registers[])
 {
-    int op=HexaToDecimal(registers[0]);
+    if(arg!="M" && arg!="H" && arg!="L"){
+    int op=hexaToDecimal(registers[registerNumber(arg)]);
+    registers[registerNumber(arg)]=convToHexa(++op);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/////////////DCR
+
+void DCR(string registers[])
+{
+    int op=hexaToDecimal(registers[0]);
     registers[0]=convToHexa(--op);
 }

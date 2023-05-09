@@ -23,11 +23,8 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         }
 
         string command = arr[0];
-       // cout << command<<endl;
         if (command == "MOV")
         {
-           // cout<<arr[1]<<" "<<arr[2];
-
             MOV(arr[1], arr[2], registers, memory);
             pc = sequence[++i];
             //cout<<registers[1]<<endl;
@@ -50,7 +47,7 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
             string reg = arr[1];
             ADD(reg, registers, memory);
             pc = sequence[++i];
-           //cout<<registers[0]<<endl;
+           cout<<"register is:"<<registers[0]<<endl;
         }
 
         else if (command == "SUB")
@@ -64,26 +61,65 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         {
             INR(arr[1],registers);
             pc = sequence[++i];
-            cout<<"after increment:"<<registers[0]<<endl;
+           // cout<<"after increment:"<<registers[0]<<endl;
         }
         else if (command == "STA")
         {
             string address = arr[1];
             STA(address, registers, memory);
             pc = sequence[++i];
-            cout<<"value at "<<arr[1]<<":"<<memory[arr[1]]<<endl;
+             cout<<"value at "<<arr[1]<<":"<<memory[arr[1]]<<endl;
         }
         else if(command == "JNC")
         {
-            string loop;
             string address = arr[1];
-            loop=JNC(address, pc, flag);
-            pc=loop;
+          
+            pc=JNC(address, pc, flag,sequence);
+             sequence[i++]=pc;
+            
+           // cout<<"SEQUENCE IS "<<sequence[i];
+        }
+        else if(command == "CMA")
+        {
+            CMA(registers,flag);
             pc=sequence[++i];
-            //pc = sequence[++i];
+            cout<<"AFTER COMPLEMENT:"<<registers[0];
+        }
+        else if(command == "LHLD")
+        {
+
+            string address=arr[1];
+            LHLD(address,registers,memory);
+            pc=sequence[++i];
+            // cout << "L is " << memory[address];
+            // cout<<"h is :"<<registers[5]<<endl;
+            // cout<<"L is :"<<registers[6]<<endl;
+        }
+         else if(command == "SHLD")
+        {
+            
+            string address=arr[1];
+            SHLD(address,registers,memory);
+            pc=sequence[++i];
+        }
+        else if(command == "DAD")
+        {
+            DAD(registers,memory,flag);
+            pc=sequence[++i];
+            // cout<<"after DAD H is :"<<registers[5]<<endl;
+            // cout<<"after DAD L is :"<<registers[6]<<endl;
+        }
+        else if(command == "XCHG")
+        {
+            XCHG(registers);
+            pc=sequence[++i];
+             cout<<"D is :"<<registers[3]<<endl;
+             cout<<"E is :"<<registers[4]<<endl;
+       
         }
         else if(command == "HLT")
         {
+            
             break;
         }
         else

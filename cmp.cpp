@@ -1,7 +1,7 @@
 
 #include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
-void cmp(string arg,string registers[],bool flag[],map<string,string>&memory)
+void CMP(string arg,string registers[],bool flag[],map<string,string>&memory)
 {
 int l=arg.length();
 if(l==1)

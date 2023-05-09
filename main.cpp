@@ -8,13 +8,13 @@ class emulator8085{
     string pc;
     string start;
     string registers[7];
-    bool flag[5];
+    bool flag[8];
    
     public:
      emulator8085(){
         start="";
         pc="";
-        for(int i=0;i<7;i++)
+        for(int i=0;i<6;i++)
             registers[i]="00";
         for(int i=0;i<7;i++)
             flag[i]=false;
@@ -45,6 +45,22 @@ class emulator8085{
                 cin >> value;
                 memory[address] = value;
             }
+            if (line.substr(0, 4) == "LHLD")
+            {
+                string address = line.substr(5);
+                cout << "Enter value for memory address " << address << ": ";
+                string value;
+                cin >> value;
+                memory[address] = value;
+    
+    
+                 string nextAddress =convToHexa(hexaToDecimal(address) + 1);
+                cout << "Enter value for memory address " << nextAddress << ": ";
+                cin >> value;
+                memory[nextAddress] = value;
+}
+
+          
         }
     }
 
@@ -72,6 +88,6 @@ int main()
     emulator8085 instance;
     instance.input();
     instance.evaluates();
-    instance.output();
+   // instance.output();
 
 }
