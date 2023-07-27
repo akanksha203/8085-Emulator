@@ -39,7 +39,7 @@ CFLAGS = -std=c++11
 EXECUTABLE = main
 
 # Source files                         
-SOURCES = main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o  arithmatic.o LoadAndStore.o logical.o validAddress.o validData.o validRegister.o validRegisterPair.o registerNumber.o
+SOURCES = main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o arithmatic.o LoadAndStore.o logical.o SET.o GET.o validAddress.o validData.o validRegister.o validRegisterPair.o registerNumber.o hexsum.o hexsub.o hexsum16.o hexsub16.o
 
 # Object files
 OBJECTS = $(SOURCES:.cpp=.o)

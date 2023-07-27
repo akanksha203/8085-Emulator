@@ -5,7 +5,9 @@
         "map": "cpp",
         "string": "cpp",
         "cmath": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "ostream": "cpp"
     }
 
 }
