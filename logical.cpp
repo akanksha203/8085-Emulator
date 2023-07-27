@@ -4,21 +4,24 @@
 ///////////JC
 string JC(string address, string pc, bool flag[], vector<string> sequence)
 {
-    
-     if (flag[0] == true) {
+    if (flag[0]) {
+        pc = address;
+    } 
+    else {
+        
         for (int i = 0; i < sequence.size(); i++) {
-
-            if (address == sequence[i]) {
-                pc = sequence[i]; 
+            if (pc == sequence[i]) {
+                if (i + 1 < sequence.size()) {
+                    pc = sequence[i + 1];
+                }
                 break;
             }
         }
     }
- 
+
     return pc;
-
-
 }
+
 
 
 
@@ -28,19 +31,24 @@ string JC(string address, string pc, bool flag[], vector<string> sequence)
 
 
 //////////////JNC
-string JNC(string address, string pc, bool flag[], vector<string> sequence) {
-    if (flag[0] == false) {
+string JNC(string address, string pc, bool flag[], vector<string> sequence)
+{
+    if (!flag[0]) {
+        pc = address;
+    } else {
         for (int i = 0; i < sequence.size(); i++) {
-
-            if (address == sequence[i]) {
-                pc = sequence[i]; 
+            if (pc == sequence[i]) {
+                if (i + 1 < sequence.size()) {
+                    pc = sequence[i + 1];
+                }
                 break;
             }
         }
     }
- 
+
     return pc;
 }
+
 
 
 
@@ -52,13 +60,29 @@ string JNC(string address, string pc, bool flag[], vector<string> sequence) {
 
 
 ///////////////JZ
-string JZ(bool flag[],string pos)
+
+string JZ(string address, string pc, bool flag[], vector<string> sequence)
 {
-    
-    if(flag[6]==true)
-      return pos;
+    if (flag[6]) 
+    {
+        pc = address;
+    }
+    else
+    {
+        for (int i = 0; i < sequence.size(); i++)
+        {
+            if (pc == sequence[i])
+            {
+                if (i + 1 < sequence.size())
+                {
+                    pc = sequence[i + 1];
+                }
+                break;
+            }
+        }
+    }
 
-
+    return pc;
 }
 
 
@@ -70,12 +94,35 @@ string JZ(bool flag[],string pos)
 
 
 
+
 /////////////////JNZ
-string JNZ(bool flag[],string pos)
+string JNZ(string address, string pc, bool flag[], vector<string> sequence)
 {
-    
-    if(flag[6]==false)
-      return pos;
+    if (!flag[6])
+    {
+        pc = address;
+    }
+    else
+    {
+        int i = 0;
+        for (; i < sequence.size(); i++)
+        {
+            if (pc == sequence[i])
+                break;
+        }
+        if (i + 1 < sequence.size())
+        {
+            pc = sequence[i + 1];
+        }
+    }
 
+    return pc;
+}
 
+/////////////////JMP
+string JMP(string arg)
+{
+    if(validAddress(arg)){
+    return arg;
+    }
 }

@@ -4,7 +4,8 @@
 
 string JC(string,string,bool [],vector<string>);
 string JNC(string,string,bool [],vector<string>);
-string JNZ(bool[],string);
-string JZ(bool [],string);
+string JNZ(string,string,bool [],vector<string>);
+string JZ(string,string,bool [],vector<string>);
+string JMP(string);
 
 #endif

@@ -1,5 +1,5 @@
 
-#include"headerFiles/master.hpp"
+#include "headerFiles/master.hpp"
 #include "headerFiles/function.hpp"
 #include "headerFiles/validity.hpp"
 
@@ -24,6 +24,7 @@ int l1=arg1.size();
 int l2=arg2.size();
 if(l1==1&&l2==2)
 {
+    cout<<"REGISTER IS "<<arg1<<" AND VALUE IS "<<arg2;
     if(arg1!="M"&&validRegister(arg1))
     {
         if(validData(arg2))
@@ -83,11 +84,9 @@ void LHLD(string add,string registers[],map<string,string>&memory)
         if (validAddress(add))
         {
             registers[6]=memory[add];
-           // cout<<"Register 6 is "<<registers[6]<<endl;
            int nextAddress = hexaToDecimal(add) + 1;
             registers[5] = memory[convToHexa(nextAddress)];
 
-            //cout<<"Register 5 is "<<registers[5]<<endl;
           
         }
         else
@@ -113,9 +112,10 @@ void SHLD(string add, string registers[], map<string,string>&memory)
         if (validAddress(add))
         {
             memory[add] = registers[6];
+            cout<<add<<":"<<memory[add]<<endl;
             int nextAddress = hexaToDecimal(add) + 1;
             memory[convToHexa(nextAddress)] = registers[5];
-            
+           cout<< convToHexa(nextAddress)<<":"<<memory[convToHexa(nextAddress)];
         }
         else
         {
@@ -132,28 +132,26 @@ void SHLD(string add, string registers[], map<string,string>&memory)
 }
 
 /////////////  LXI
-void LXI(string registers[], map<string,string>memory ,string operand)
+void LXI(string args1, string args2, string registers[], map<string, string> memory)
 {
-    string reg = operand.substr(0,2);
-    string Value = operand.substr(2,4);
-
-    if (reg== "B") {
-        registers[2] = Value.substr(0,2);
-        registers[1] = Value.substr(2,2);
-    } else if (reg == "D") {
-        registers[4] = Value.substr(0,2);
-        registers[3] = Value.substr(2,2);
-    } else if (reg == "H") {
-        registers[6] = Value.substr(0,2);
-        registers[5] = Value.substr(2,2);
-    } else if (reg == "S") {
-        registers[8] = Value.substr(0,2);
-        registers[7] = Value.substr(2,2);
+    if (args1 == "B") {
+        registers[1] = args2.substr(0, 2); 
+        registers[2] = args2.substr(2); 
+    } else if (args1 == "D") {
+        registers[3] = args2.substr(0, 2); 
+        registers[4] = args2.substr(2); 
+    } else if (args1 == "H") {
+        registers[5] = args2.substr(0, 2); 
+        registers[6] = args2.substr(2); 
+    } else if (args1 == "SP") {
+        registers[7] = args2.substr(0, 2); 
+        registers[8] = args2.substr(2); 
+   
     }
-    //substr(start,length);
-  
-    //A0 B1 C2 D3 E4 H5 L6
+         cout<<"H is:"<<registers[5]<<endl;
+        cout<<"L is:"<<registers[6]<<endl;
 }
+
 
 
 
@@ -165,13 +163,15 @@ int l2=arg2.size();
 if(l1==1&&l2==1)
 {
     if(arg1!="M"&&arg2!="M"&&validRegister(arg1)&&validRegister(arg2))
-{
+{   
     registers[registerNumber(arg1)]=registers[registerNumber(arg2)];
+
 }
 else if(arg1=="M"&&arg2!="M"&&validRegister(arg2))
 {
     string address=registers[5]+registers[6];
     memory[address]=registers[registerNumber(arg2)];
+    cout<<"M is :"<<address<<" VALUE IS "<<memory[address]<<endl;
 }
 else if(arg1!="M"||arg2=="M"&&validRegister(arg1))
 {
@@ -203,5 +203,21 @@ void STA(string arg,string registers[],map<string,string>&memory)
     else{
         cout<<"invaid argument";
         exit (0);
+    }
+}
+
+
+//////////STAX
+void STAX(string arg,string registers[],map<string,string>&memory)
+{
+    if(validRegisterPair(arg))
+    {
+        string address="";
+        address=registers[registerNumber(arg)]+registers[registerNumber(arg)+1];
+        if(validAddress(address))
+        {
+            memory[address]=registers[0];
+        }
+        cout<<"STAX memory address has "<<address<<" "<<memory[address]<<endl;
     }
 }

@@ -37,28 +37,28 @@ class emulator8085{
             memory[pc] = line;
             pc = getAddress(line, pc);
 
-            if (line.substr(0, 3) == "LDA")
-            {
-                string address = line.substr(4);
-                cout << "Enter value for memory address " << address << ": ";
-                string value;
-                cin >> value;
-                memory[address] = value;
-            }
-            if (line.substr(0, 4) == "LHLD")
-            {
-                string address = line.substr(5);
-                cout << "Enter value for memory address " << address << ": ";
-                string value;
-                cin >> value;
-                memory[address] = value;
+//             if (line.substr(0, 3) == "LDA")
+//             {
+//                 string address = line.substr(4);
+//                 cout << "Enter value for memory address " << address << ": ";
+//                 string value;
+//                 cin >> value;
+//                 memory[address] = value;
+//             }
+//             if (line.substr(0, 4) == "LHLD")
+//             {
+//                 string address = line.substr(5);
+//                 cout << "Enter value for memory address " << address << ": ";
+//                 string value;
+//                 cin >> value;
+//                 memory[address] = value;
     
     
-                 string nextAddress =convToHexa(hexaToDecimal(address) + 1);
-                cout << "Enter value for memory address " << nextAddress << ": ";
-                cin >> value;
-                memory[nextAddress] = value;
-}
+//                  string nextAddress =convToHexa(hexaToDecimal(address) + 1);
+//                 cout << "Enter value for memory address " << nextAddress << ": ";
+//                 cin >> value;
+//                 memory[nextAddress] = value;
+// }
 
           
         }
@@ -88,6 +88,6 @@ int main()
     emulator8085 instance;
     instance.input();
     instance.evaluates();
-   // instance.output();
+    //instance.output();
 
 }

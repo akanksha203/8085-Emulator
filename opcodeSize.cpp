@@ -4,7 +4,7 @@ int opcodeFetch(string command)
 {
     string one[]={"HLT","MOV","DCR","INR","INX","DCX","SUB","ADD","CMA","CMP","XCHG","DAD","STAX"};
     string two[]={"MVI","ADI","SUB"};
-    string three[]={"STA","SET","LXI","LDA","STA","SHLD","LHLD","JMP","JC","JNZ","JNC","JZ","SET"};
+    string three[]={"STA","SET","LXI","LDA","STA","SHLD","LHLD","JMP","JC","JNZ","JNC","JZ","GET"};
 
     for(int i=0;i<13;i++)
     {
