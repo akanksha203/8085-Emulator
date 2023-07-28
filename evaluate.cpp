@@ -7,7 +7,7 @@
 
 string command="";
 
-void evaluate(vector<string> sequence, map<string, string> memory, string registers[], bool flag[], string start, string pc)
+string evaluate(vector<string> sequence, map<string, string> memory, string registers[], bool flag[], string start, string pc,int endpoint)
 {
     pc = start;
    
@@ -174,7 +174,7 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         }
         else if(command == "DAD")
         {
-            DAD(registers,memory,flag);
+            DAD(command,arr[1],registers,memory,flag);
             pc=sequence[++i];
              cout<<"after DAD H is :"<<registers[5]<<endl;
              cout<<"after DAD L is :"<<registers[6]<<endl;
@@ -207,13 +207,13 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         }
         else if(command == "INX")
         {
-            INX(arr[1],registers,memory);
+            INX(command,arr[1],registers,memory,flag);
             pc=sequence[++i];
             cout<<"PC is "<<pc<<" and i is "<<i<<endl;
         }
         else if(command =="DCX")
         {
-            DCX(arr[1],registers,memory);
+            DCX(command,arr[1],registers,memory,flag);
             pc=sequence[++i];
         }
         else if(command == "ADI")
@@ -223,7 +223,7 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
         }
          else if(command == "SUI")
         {
-            SUI(arr[1],registers);
+            SUI(arr[1],registers,flag);
                pc=sequence[++i];
         }
         else if(command == "STAX")
@@ -242,6 +242,6 @@ void evaluate(vector<string> sequence, map<string, string> memory, string regist
             pc = sequence[++i];
         }
     }
-    
+    return pc;
    
 }

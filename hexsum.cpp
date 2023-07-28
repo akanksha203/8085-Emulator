@@ -8,18 +8,25 @@ string hexsum(string arg1, string arg2,bool flag[])
     int sum = op1 + op2;
     bitset<8>dataInBinary(sum);
     int parity = dataInBinary.count();
-    if (parity % 2 == 0 && parity != 0)
-        flag[2] = true;
-    else
-        flag[2] = false;
-    flag[7]=dataInBinary[7];
-    if (parity == 0)
+    if(parity==0)
+		flag[2]=true;
+	else if(parity%2==0)
+		flag[2]=true;
+	else if(parity%2==1)
+		flag[2]=false;
+    
+    if (sum == 0)
         flag[6] = true;
+    else
+        flag[6] = false;
+    flag[7]=dataInBinary[7];
+    
 
     
     flag[0] = (sum > 255); 
     
-     flag[4] = ((op1 & 0xF) + (op2 & 0xF)) > 0xF;
+     if(((op1 & 0xF) + (op2 & 0xF)) > 0xF)
+        flag[4]=true;
     
    
     string res = convToHexa(sum);

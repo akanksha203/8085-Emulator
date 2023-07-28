@@ -2,12 +2,15 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "*.embeddedhtml": "html",
+        "*.cpp": "cpp",
+        "*.html": "html",
         "map": "cpp",
         "string": "cpp",
         "cmath": "cpp",
         "iostream": "cpp",
         "iosfwd": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "sstream": "cpp"
     }
 
 }

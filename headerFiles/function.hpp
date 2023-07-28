@@ -9,15 +9,14 @@ bool validRegisterPair(string);
 bool validAddress(string);
 bool ishexa(char);
 string hexsum(string,string,bool[]);
-string hexsub(string,string);
-string hexsum16(string,string);
-string hexsub16(string,string);
+string hexsub(string,string,bool[]);
+string hexsum16(string,string,string,bool[]);
+string hexsub16(string,string,string,bool[]);
 bool validRegister(string);
 string getAddress(string , string);
-void evaluate(vector<string>,map<string,string>,string [],bool [],string ,string);
+string evaluate(vector<string>,map<string,string>,string [],bool [],string ,string,int);
 void SET(string ,string,map<string,string> &);
 void GET(string,map<string,string> &);
-
 
 
 #endif

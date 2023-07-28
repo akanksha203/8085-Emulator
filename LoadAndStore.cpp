@@ -65,12 +65,12 @@ void LDA(string arg,string registers[],map<string,string>memory)
         registers[0]=memory[arg];
        }
        else{
-        cout<<"invalid address";
+        cout<<"Invalid address";
        }
      }
      else
      {
-        cout<<"invlaid argument";
+        cout<<"Invlaid argument";
      }
 }
 
@@ -134,22 +134,28 @@ void SHLD(string add, string registers[], map<string,string>&memory)
 /////////////  LXI
 void LXI(string args1, string args2, string registers[], map<string, string> memory)
 {
-    if (args1 == "B") {
-        registers[1] = args2.substr(0, 2); 
-        registers[2] = args2.substr(2); 
-    } else if (args1 == "D") {
-        registers[3] = args2.substr(0, 2); 
-        registers[4] = args2.substr(2); 
-    } else if (args1 == "H") {
-        registers[5] = args2.substr(0, 2); 
-        registers[6] = args2.substr(2); 
-    } else if (args1 == "SP") {
-        registers[7] = args2.substr(0, 2); 
-        registers[8] = args2.substr(2); 
-   
+    int l1=args1.length();
+    int l2=args2.length();
+    if(l1==1&&l2==4){
+        if(validRegisterPair(args1)){
+            if (args1 == "B") {
+                registers[1] = args2.substr(0, 2); 
+                registers[2] = args2.substr(2); 
+            } else if (args1 == "D") {
+                registers[3] = args2.substr(0, 2); 
+                registers[4] = args2.substr(2); 
+            } else if (args1 == "H") {
+                registers[5] = args2.substr(0, 2); 
+                registers[6] = args2.substr(2); 
+            } else if (args1 == "M") {
+                registers[7] = args2.substr(0, 2); 
+                registers[8] = args2.substr(2); 
+        
+            }
+                cout<<"H is:"<<registers[5]<<endl;
+                cout<<"L is:"<<registers[6]<<endl;
+        }
     }
-         cout<<"H is:"<<registers[5]<<endl;
-        cout<<"L is:"<<registers[6]<<endl;
 }
 
 
@@ -210,14 +216,21 @@ void STA(string arg,string registers[],map<string,string>&memory)
 //////////STAX
 void STAX(string arg,string registers[],map<string,string>&memory)
 {
-    if(validRegisterPair(arg))
-    {
-        string address="";
-        address=registers[registerNumber(arg)]+registers[registerNumber(arg)+1];
-        if(validAddress(address))
+    int l=arg.length();
+    if(l==1){
+        if(validRegisterPair(arg))
         {
-            memory[address]=registers[0];
+            string address="";
+            address=registers[registerNumber(arg)]+registers[registerNumber(arg)+1];
+            if(validAddress(address))
+            {
+                memory[address]=registers[0];
+            }
+            cout<<"STAX memory address has "<<address<<" "<<memory[address]<<endl;
         }
-        cout<<"STAX memory address has "<<address<<" "<<memory[address]<<endl;
+    }
+    else{
+        cout<<"Invalid Content";
+        exit(0);
     }
 }
