@@ -7,12 +7,12 @@
 
 string command="";
 
-string evaluate(vector<string> sequence, map<string, string> memory, string registers[], bool flag[], string start, string pc,int endpoint)
+string evaluate(vector<string> sequence, map<string, string>&memory, string registers[], bool flag[], string start, string pc,int endpoint)
 {
     pc = start;
    
     int i = 0;
-    while (i < sequence.size())
+    while (i!=endpoint)
     {
         
         vector<string> arr;

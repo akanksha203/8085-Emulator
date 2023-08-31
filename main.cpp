@@ -8,7 +8,7 @@ class emulator8085{
     string pc;
     string start;
     string registers[7];
-    bool flag[5];
+    bool flag[8];
     int breakpoint;
     int step;
    
@@ -18,7 +18,7 @@ class emulator8085{
         pc="";
         for(int i=0;i<7;i++)
             registers[i]="00";
-        for(int i=0;i<7;i++)
+        for(int i=0;i<8;i++)
             flag[i]=false;
         breakpoint=0;
         step=0;
@@ -115,6 +115,16 @@ class emulator8085{
         cout<<endl<<endl;
         cout<<"PC:"<<pc<<endl<<endl;
          cout<<"******************************************************\n";
+
+          cout << "MEMORY LOCATIONS WITH NON-ZERO VALUES:" << endl;
+            for (const auto& entry : memory)
+            {
+                if (entry.first.compare("3000") >= 0 && entry.second != "00")
+                {
+                    cout << entry.first << ": " << entry.second << endl;
+                }
+            }
+           cout << "******************************************************\n";
     }
 
 };

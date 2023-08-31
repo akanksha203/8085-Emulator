@@ -14,7 +14,7 @@ string hexsum16(string,string,string,bool[]);
 string hexsub16(string,string,string,bool[]);
 bool validRegister(string);
 string getAddress(string , string);
-string evaluate(vector<string>,map<string,string>,string [],bool [],string ,string,int);
+string evaluate(vector<string>,map<string,string>&,string [],bool [],string ,string,int);
 void SET(string ,string,map<string,string> &);
 void GET(string,map<string,string> &);
 

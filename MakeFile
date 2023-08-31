@@ -1,34 +1,4 @@
 
-# # Makefile
-
-# main: main.o getAddress.o
-# 	g++ -o main  main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o evaluate.o MOV.o MVI.o ADD.o STA.o SUB.o INR.o INX.o DCX.o XCHG.o validAddress.o validData.o validRegister.o validRegisterPair.o registerNumber.o
-
-
-# main.o: main.cpp headerFiles/master.hpp
-# 	g++ -c main.cpp
-
-# getAddress.o: getAddress.cpp
-# 	g++ -c getAddress.cpp
-
-# HexaConversion.o:HexaConversion.hpp
-# 	g++ -c HexaConversion.cpp
-
-# DecimalConversion.o:DecimalConversion.hpp
-# 	g++ -c DecimalConversion.cpp
-
-# opcodeSize.o:opcodeSize.hpp
-# 	g++ -c opcodeSize.cpp
-
-# evaluate.o:headerFiles/function.hpp  headerFiles/arithmatic.hpp headerFiles/master.hpp headerFiles/logical.hpp loadAndStore.cpp logical.cpp arithmatic.cpp
-# 	g++ -c evaluate.cpp arithmatic.cpp logical.cpp loadAndStore.cpp 
-
-
-
-
-
-
-
 # Compiler
 CC = g++
 
@@ -45,7 +15,7 @@ SOURCES = main.o getAddress.o HexaConversion.o DecimalConversion.o opcodeSize.o 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Include directories
-INCLUDES = -IheaderFiles
+INCLUDES = -IheaderFiles 
 
 # Default target
 all: $(EXECUTABLE)
